@@ -1,0 +1,15 @@
+﻿@model CategoryFormServiceModel
+
+@{
+    ViewBag.Title = "Create Category";
+}
+
+<div class="row">
+    <div class="col-md-offset-2 col-md-8">
+        <h2 class="col-md-offset-2">@ViewBag.Title</h2>
+        @using (Html.BeginForm("Create", "Categories", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            Html.RenderPartial("_CategoryForm", Model);
+        }
+    </div>
+</div>

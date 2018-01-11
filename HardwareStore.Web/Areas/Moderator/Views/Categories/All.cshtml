@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ListCategoriesServiceModel>
+
+@{
+    ViewBag.Title = "All Categories";
+}
+
+<div class="row">
+    <h2>
+        @ViewBag.Title -
+        <a class="btn btn-success" href="@Url.Action("Create", "Categories")">New Category</a>
+        <a class="btn btn-success" href="@Url.Action("Create", "SubCategories")">New Sub Category</a>
+    </h2>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Sub Category Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+                <tr>
+                    <td>@category.Name</td>
+                    <td></td>
+                    <td>
+                        <a class="btn btn-default btn-xs edit-button" href="@Url.Action("Edit", "Categories", new { id = category.Id })">Edit</a>
+                    </td>
+                </tr>
+
+                foreach (var subCategory in category.SubCategories)
+                {
+                    <tr>
+                        <td>-></td>
+                        <td>@subCategory.Name</td>
+                        <td>
+                            <a class="btn btn-default btn-xs edit-button" href="@Url.Action("Edit", "SubCategories", new { id = subCategory.Id })">Edit</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
