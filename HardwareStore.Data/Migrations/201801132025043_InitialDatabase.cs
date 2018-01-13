@@ -34,12 +34,10 @@ namespace HardwareStore.Data.Migrations
                 c => new
                 {
                     Id = c.Int(nullable: false, identity: true),
-                    Name = c.String(nullable: false, maxLength: 50),
-                    Model = c.String(nullable: false, maxLength: 50),
+                    Name = c.String(nullable: false, maxLength: 100),
                     Description = c.String(nullable: false),
-                    Manufacturer = c.String(nullable: false, maxLength: 50),
                     Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                    Discount = c.Decimal(precision: 18, scale: 2),
+                    Discount = c.Int(),
                     Quantity = c.Int(nullable: false),
                     WarrantyLength = c.Int(nullable: false),
                     Image = c.Binary(),
@@ -49,6 +47,7 @@ namespace HardwareStore.Data.Migrations
                 })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.SubCategories", t => t.SubCategoryId, cascadeDelete: true)
+                .Index(t => t.Name, unique: true)
                 .Index(t => t.SubCategoryId);
 
             CreateTable(
@@ -58,7 +57,7 @@ namespace HardwareStore.Data.Migrations
                     Id = c.Int(nullable: false, identity: true),
                     Content = c.String(nullable: false),
                     Mark = c.Int(nullable: false),
-                    ReviewDate = c.DateTime(nullable: false),
+                    DateAdded = c.DateTime(nullable: false),
                     AuthorId = c.Int(nullable: false),
                     ItemId = c.Int(nullable: false),
                 })
@@ -225,6 +224,7 @@ namespace HardwareStore.Data.Migrations
             DropIndex("dbo.Reviews", new[] { "ItemId" });
             DropIndex("dbo.Reviews", new[] { "AuthorId" });
             DropIndex("dbo.Items", new[] { "SubCategoryId" });
+            DropIndex("dbo.Items", new[] { "Name" });
             DropIndex("dbo.SubCategories", new[] { "CategoryId" });
             DropIndex("dbo.SubCategories", new[] { "Name" });
             DropIndex("dbo.Categories", new[] { "Name" });

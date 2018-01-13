@@ -149,7 +149,6 @@
         {
             return this.categoryService
                 .All()
-                .Where(c => !c.IsDeleted)
                 .Select(c => new SelectListItem
                 {
                     Text = c.Name,

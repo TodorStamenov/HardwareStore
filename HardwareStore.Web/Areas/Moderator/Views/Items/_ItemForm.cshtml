@@ -1,0 +1,66 @@
+﻿@model ItemFormViewModel
+
+@Html.AntiForgeryToken()
+<div class="form-group">
+    @Html.LabelFor(m => m.Item.Name, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Item.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Item.Name, string.Empty, new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Item.Price, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Item.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Item.Price, string.Empty, new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Item.Discount, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Item.Discount, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Item.Discount, string.Empty, new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Item.Quantity, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Item.Quantity, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Item.Quantity, string.Empty, new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Item.WarrantyLength, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(m => m.Item.WarrantyLength, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Item.WarrantyLength, string.Empty, new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Item.Image, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        <input type="file" name="Item.Image" accept="image/*" style="display:none" />
+        <button type="button" class="btn btn-primary" onclick="document.getElementsByName('Item.Image')[0].click()">
+            Choose Image
+        </button>
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Item.Description, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextAreaFor(m => m.Item.Description, new { @class = "form-control", rows = 10 })
+        @Html.ValidationMessageFor(m => m.Item.Description, string.Empty, new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.SubCategoryId, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(m => m.SubCategoryId, Model.SubCategories, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SubCategoryId, string.Empty, new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input class="btn btn-success" type="submit" value="Save Item" />
+    </div>
+</div>

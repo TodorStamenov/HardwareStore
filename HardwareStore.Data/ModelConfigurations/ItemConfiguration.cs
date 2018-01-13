@@ -10,6 +10,9 @@
             this.HasMany(i => i.Reviews)
                 .WithRequired(r => r.Item)
                 .HasForeignKey(r => r.ItemId);
+
+            this.HasIndex(i => i.Name)
+                .IsUnique(true);
         }
     }
 }

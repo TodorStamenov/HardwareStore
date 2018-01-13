@@ -221,12 +221,14 @@
     <Compile Include="Areas\Admin\Models\Users\UserRoleEditViewModel.cs" />
     <Compile Include="Areas\Moderator\Controllers\BaseModeratorController.cs" />
     <Compile Include="Areas\Moderator\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Moderator\Controllers\ItemsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\SubCategoriesController.cs" />
+    <Compile Include="Areas\Moderator\Models\Items\ItemFormViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\SubCategories\SubCategoryFormViewModel.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
@@ -241,6 +243,8 @@
     <Compile Include="Infrastructure\WebConstants.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Models\Account\RegisterViewModel.cs" />
+    <Compile Include="Models\Items\ItemDetailsViewModel.cs" />
+    <Compile Include="Models\Items\ListItemsViewModel.cs" />
     <Compile Include="Models\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="Models\Manage\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -286,6 +290,9 @@
     <Content Include="Areas\Moderator\Views\SubCategories\Delete.cshtml" />
     <Content Include="Areas\Moderator\Views\SubCategories\Edit.cshtml" />
     <Content Include="Areas\Moderator\Views\SubCategories\_SubCategoryForm.cshtml" />
+    <Content Include="Areas\Moderator\Views\Items\Create.cshtml" />
+    <Content Include="Areas\Moderator\Views\Items\_ItemForm.cshtml" />
+    <Content Include="Areas\Moderator\Views\Items\Edit.cshtml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -314,7 +321,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
@@ -322,6 +329,7 @@
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
     <Content Include="Views\Shared\_CategoryMenu.cshtml" />
+    <Content Include="Views\Items\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HardwareStore.Common\HardwareStore.Common.csproj">

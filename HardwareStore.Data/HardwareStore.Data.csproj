@@ -59,9 +59,9 @@
     <Compile Include="IdentityModels\UserClaim.cs" />
     <Compile Include="IdentityModels\UserLogin.cs" />
     <Compile Include="IdentityModels\UserStore.cs" />
-    <Compile Include="Migrations\201801111848010_InitialDatabase.cs" />
-    <Compile Include="Migrations\201801111848010_InitialDatabase.Designer.cs">
-      <DependentUpon>201801111848010_InitialDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201801132025043_InitialDatabase.cs" />
+    <Compile Include="Migrations\201801132025043_InitialDatabase.Designer.cs">
+      <DependentUpon>201801132025043_InitialDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelConfigurations\CategoryConfiguration.cs" />
@@ -96,8 +96,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801111848010_InitialDatabase.resx">
-      <DependentUpon>201801111848010_InitialDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801132025043_InitialDatabase.resx">
+      <DependentUpon>201801132025043_InitialDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

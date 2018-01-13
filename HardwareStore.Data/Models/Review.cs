@@ -14,7 +14,7 @@
 
         public Mark Mark { get; set; }
 
-        public DateTime ReviewDate { get; set; }
+        public DateTime DateAdded { get; set; }
 
         public int AuthorId { get; set; }
 

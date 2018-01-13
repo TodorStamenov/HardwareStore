@@ -1,16 +1,15 @@
-﻿namespace HardwareStore.Data.Models
+﻿namespace HardwareStore.Services.Areas.Moderator.Models.Items
 {
-    using System;
-    using System.Collections.Generic;
+    using Data;
     using System.ComponentModel.DataAnnotations;
+    using System.Web;
 
-    public class Item
+    public class ItemFormServiceModel
     {
-        public int Id { get; set; }
-
         [Required]
-        [MinLength(DataConstants.ItemConstants.MinNameLength)]
-        [MaxLength(DataConstants.ItemConstants.MaxNameLength)]
+        [StringLength(
+            DataConstants.ItemConstants.MaxNameLength,
+            MinimumLength = DataConstants.ItemConstants.MinNameLength)]
         public string Name { get; set; }
 
         [Required]
@@ -39,22 +38,6 @@
             DataConstants.ItemConstants.MaxWarranty)]
         public int WarrantyLength { get; set; }
 
-        [MaxLength(DataConstants.ItemConstants.MaxItemImageSize)]
-        public byte[] Image { get; set; }
-
-        [Range(
-            DataConstants.ItemConstants.MinViewsCount,
-            DataConstants.ItemConstants.MaxViewsCount)]
-        public int Views { get; set; }
-
-        public DateTime UploadDate { get; set; }
-
-        public int SubCategoryId { get; set; }
-
-        public virtual SubCategory SubCategory { get; set; }
-
-        public virtual List<Review> Reviews { get; set; } = new List<Review>();
-
-        public virtual List<ItemSale> Sales { get; set; } = new List<ItemSale>();
+        public HttpPostedFileBase Image { get; set; }
     }
 }

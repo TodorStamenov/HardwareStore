@@ -12,10 +12,10 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="admin" aria-expanded="false">Admin<span class="caret"></span></a>
                     <ul class="dropdown-menu " aria-labelledby="admin">
                         <li class="dropdown-item">
-                            @Html.ActionLink("Users", "Users", "Users", new { area = "Admin" }, new { @class = "dropdown-link" })
+                            @Html.ActionLink("Users", "Users", "Users", new { area = WebConstants.AdminArea }, new { @class = "dropdown-link" })
                         </li>
                         <li class="dropdown-item">
-                            @Html.ActionLink("Logs", "Logs", "Users", new { area = "Admin" }, new { @class = "dropdown-link" })
+                            @Html.ActionLink("Logs", "Logs", "Users", new { area = WebConstants.AdminArea }, new { @class = "dropdown-link" })
                         </li>
                     </ul>
                 </li>
@@ -27,6 +27,9 @@
                     <ul class="dropdown-menu " aria-labelledby="moderator">
                         <li class="dropdown-item">
                             @Html.ActionLink("Categories", "All", "Categories", new { area = WebConstants.ModeratorArea }, new { @class = "dropdown-link" })
+                        </li>
+                        <li class="dropdown-item">
+                            @Html.ActionLink("New Item", "Create", "Items", new { area = WebConstants.ModeratorArea }, new { @class = "dropdown-link" })
                         </li>
                     </ul>
                 </li>

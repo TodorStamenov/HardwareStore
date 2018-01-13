@@ -17,14 +17,10 @@
         public static class ItemConstants
         {
             public const int MinNameLength = 2;
-            public const int MaxNameLength = 50;
-            public const int MinManufacturerLength = 2;
-            public const int MaxManufacturerLength = 50;
-            public const int MinModelLength = 3;
-            public const int MaxModelLength = 50;
+            public const int MaxNameLength = 100;
             public const int MinDescriptionLength = 3;
-            public const double MinDiscount = 0.01;
-            public const double MaxDiscount = 1;
+            public const int MinDiscount = 0;
+            public const int MaxDiscount = 100;
             public const double MinPrice = double.Epsilon;
             public const double MaxPrice = double.MaxValue;
             public const int MinQuantity = 0;

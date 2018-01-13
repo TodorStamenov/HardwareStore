@@ -29,8 +29,8 @@ namespace HardwareStore.Data.Migrations
         private const int MaxQuantity = 200;
         private const int MinPrice = 5;
         private const int MaxPrice = 5000;
-        private const int MinDiscount = 1;
-        private const int MaxDiscount = 100;
+        private const int MinDiscount = DataConstants.ItemConstants.MinDiscount;
+        private const int MaxDiscount = DataConstants.ItemConstants.MaxDiscount;
         private const int MinWarranty = DataConstants.ItemConstants.MinWarranty;
         private const int MaxWarranty = DataConstants.ItemConstants.MaxWarranty;
         private const int SalesCount = 100;
@@ -196,18 +196,16 @@ namespace HardwareStore.Data.Migrations
             List<int> subCategoryIds = await context.SubCategories.Select(c => c.Id).ToListAsync();
             List<User> users = await context.Users.ToListAsync();
 
-            decimal? discount = this.GetRandomBool()
-                ? (decimal?)random.Next(MinDiscount, MaxDiscount) / 100M
-                : null;
-
             for (int i = 1; i <= itemsCount; i++)
             {
+                int? discount = this.GetRandomBool()
+                    ? (int?)random.Next(MinDiscount, MaxDiscount)
+                    : null;
+
                 Item item = new Item
                 {
                     Name = $"Item Name {i}",
-                    Model = $"Model Name {i}",
                     Description = CommonConstants.lorem,
-                    Manufacturer = $"Manufacturer Name {i}",
                     Quantity = random.Next(MinQuantity, MaxQuantity),
                     Price = random.Next(MinPrice, MaxPrice),
                     Discount = discount,
@@ -249,7 +247,7 @@ namespace HardwareStore.Data.Migrations
                 {
                     Content = CommonConstants.lorem.Substring(0, CommonConstants.lorem.Length / 2),
                     AuthorId = users[random.Next(0, users.Count)].Id,
-                    ReviewDate = item.UploadDate.AddHours(i).AddMinutes(i),
+                    DateAdded = item.UploadDate.AddHours(i).AddMinutes(i),
                     ItemId = item.Id,
                     Mark = (Mark)random.Next(0, Enum.GetValues(typeof(Mark)).Length),
                 };
@@ -273,7 +271,7 @@ namespace HardwareStore.Data.Migrations
                 .Select(q => new
                 {
                     q.Id,
-                    q.ReviewDate,
+                    q.DateAdded,
                 })
                 .ToListAsync();
 
@@ -285,7 +283,7 @@ namespace HardwareStore.Data.Migrations
                 {
                     Content = CommonConstants.lorem.Substring(0, CommonConstants.lorem.Length / 4),
                     AuthorId = users[random.Next(0, users.Count)].Id,
-                    DateAdded = review.ReviewDate.AddHours(i).AddMinutes(i),
+                    DateAdded = review.DateAdded.AddHours(i).AddMinutes(i),
                     ReviewId = review.Id
                 };
 
@@ -336,7 +334,7 @@ namespace HardwareStore.Data.Migrations
                         Item = item,
                         ItemId = item.Id,
                         Quantity = quantity,
-                        Price = quantity * item.Price * (1M - item.Discount.GetValueOrDefault())
+                        Price = quantity * item.Price * (1M - (item.Discount.GetValueOrDefault() / 100M))
                     });
 
                     item.Quantity -= quantity;

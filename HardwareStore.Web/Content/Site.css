@@ -26,3 +26,24 @@ textarea {
 .search-form {
     margin-top: 7px;
 }
+
+.glyphicon-shopping-cart {
+    margin-right: 7px;
+}
+
+.site-image {
+    float: left;
+    margin-right: 15px;
+}
+
+.item-info {
+    margin-right: 5px;
+}
+
+.site-panel {
+    padding: 20px;
+}
+
+input, select, textarea {
+    max-width: 100%;
+}
