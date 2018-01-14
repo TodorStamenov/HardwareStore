@@ -1,0 +1,36 @@
+﻿@model ReviewFormViewModel
+
+@{
+    ViewBag.Title = "Create Review";
+}
+
+<div class="row">
+    <div class="col-md-offset-2 col-md-8">
+        <h2 class="col-md-offset-2">@ViewBag.Title</h2>
+        @using (Html.BeginForm("Create", "Reviews", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Review.ItemId)
+            @Html.HiddenFor(m => m.Review.Page)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Mark, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(m => m.Mark, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Mark, string.Empty, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Review.Content, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(m => m.Review.Content, new { @class = "form-control", rows = 15 })
+                    @Html.ValidationMessageFor(m => m.Review.Content, string.Empty, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input class="btn btn-success" type="submit" value="Save Review" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

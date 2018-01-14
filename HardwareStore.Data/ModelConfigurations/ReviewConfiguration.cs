@@ -10,7 +10,7 @@
             this.HasMany(r => r.Comments)
                 .WithRequired(c => c.Review)
                 .HasForeignKey(c => c.ReviewId)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
         }
     }
 }

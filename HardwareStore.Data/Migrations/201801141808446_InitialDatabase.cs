@@ -112,7 +112,7 @@ namespace HardwareStore.Data.Migrations
                 })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Users", t => t.AuthorId)
-                .ForeignKey("dbo.Reviews", t => t.ReviewId)
+                .ForeignKey("dbo.Reviews", t => t.ReviewId, cascadeDelete: true)
                 .Index(t => t.ReviewId)
                 .Index(t => t.AuthorId);
 
@@ -165,7 +165,7 @@ namespace HardwareStore.Data.Migrations
                     UserId = c.Int(nullable: false),
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.Users", t => t.UserId)
                 .Index(t => t.UserId);
 
             CreateTable(

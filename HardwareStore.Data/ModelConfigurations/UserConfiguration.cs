@@ -9,7 +9,8 @@
         {
             this.HasMany(u => u.Sales)
                 .WithRequired(q => q.User)
-                .HasForeignKey(q => q.UserId);
+                .HasForeignKey(q => q.UserId)
+                .WillCascadeOnDelete(false);
 
             this.HasMany(u => u.Reviews)
                 .WithRequired(q => q.Author)

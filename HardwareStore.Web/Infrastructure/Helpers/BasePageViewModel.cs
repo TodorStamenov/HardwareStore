@@ -1,8 +1,8 @@
-﻿using System;
-
-namespace HardwareStore.Web.Infrastructure.Helpers
+﻿namespace HardwareStore.Web.Infrastructure.Helpers
 {
-    public class BasePageViewModel
+    using System;
+
+    public abstract class BasePageViewModel
     {
         private const int BackOffset = 5;
         private const int ForwardOffset = 5;

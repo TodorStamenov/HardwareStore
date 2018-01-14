@@ -1,8 +1,10 @@
 ﻿namespace HardwareStore.Services.Implementations
 {
+    using AutoMapper.QueryableExtensions;
     using Data;
-    using HardwareStore.Services.Infrastructure.Extensions;
-    using HardwareStore.Services.Models.Comments;
+    using Data.Models;
+    using Infrastructure.Extensions;
+    using Models.Comments;
     using Models.Reviews;
     using System;
     using System.Collections.Generic;
@@ -23,6 +25,60 @@
                 .Reviews
                 .Where(r => r.ItemId == itemId)
                 .Count();
+        }
+
+        public bool CanEdit(int id, int userId)
+        {
+            return this.db
+                .Reviews
+                .Any(r => r.Id == id && r.AuthorId == userId);
+        }
+
+        public bool Create(string content, Mark mark, int itemId, int authorId)
+        {
+            if (!this.db.Items.Any(i => i.Id == itemId))
+            {
+                return false;
+            }
+
+            Review review = new Review
+            {
+                Content = content,
+                AuthorId = authorId,
+                ItemId = itemId,
+                Mark = mark,
+                DateAdded = DateTime.UtcNow
+            };
+
+            this.db.Reviews.Add(review);
+            this.db.SaveChanges();
+
+            return true;
+        }
+
+        public bool Edit(int id, string content)
+        {
+            Review review = this.db.Reviews.Find(id);
+
+            if (review == null)
+            {
+                return false;
+            }
+
+            review.Content = content;
+
+            this.db.SaveChanges();
+
+            return true;
+        }
+
+        public ReviewFormServiceModel GetForm(int id)
+        {
+            return this.db
+                .Reviews
+                .Where(r => r.Id == id)
+                .ProjectTo<ReviewFormServiceModel>()
+                .FirstOrDefault();
         }
 
         public IEnumerable<ListReviewsServiceModel> ByItem(int itemId, int page, int pageSize, int userId)

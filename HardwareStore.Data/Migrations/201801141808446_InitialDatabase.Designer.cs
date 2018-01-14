@@ -13,7 +13,7 @@ namespace HardwareStore.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201801132025043_InitialDatabase"; }
+            get { return "201801141808446_InitialDatabase"; }
         }
         
         string IMigrationMetadata.Source

@@ -63,7 +63,7 @@
                     }
                     else
                     {
-                        <td>@Model.Item.Rating</td>
+                        <td>@Model.Item.Rating/4</td>
                     }
                 </tr>
                 <tr>
@@ -81,8 +81,8 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <hr />
-                <a class="btn btn-success" href="@Url.Action("Create", "Reviews", new { questionId = Model.Item.Id, page = Model.CurrentPage })">
-                    Answer
+                <a class="btn btn-success" href="@Url.Action("Create", "Reviews", new { itemId = Model.Item.Id, page = Model.CurrentPage })">
+                    Review
                 </a>
                 <div class="pull-right">
                     @if (User.IsInRole(CommonConstants.ModeratorRole))
@@ -126,7 +126,7 @@
                 <div class="pull-right">
                     @for (int i = 0; i < review.Mark; i++)
                     {
-                        <span class="glyphicon glyphicon-star-empty"></span>
+                        <span class="glyphicon glyphicon-star text-primary"></span>
                     }
                 </div>
                 <hr />
@@ -137,7 +137,7 @@
                 @if (User.Identity.IsAuthenticated || User.IsInRole(CommonConstants.ModeratorRole))
                 {
                     <hr />
-                    <a class="btn btn-success" href="@Url.Action("Create", "Comments", new { reviewId = review.Id, itemId = Model.Item.Id, page = Model.CurrentPage  })">
+                    <a class="btn btn-success" href="@Url.Action("Create", "Comments", new { id = review.Id, itemId = Model.Item.Id, page = Model.CurrentPage })">
                         Comment
                     </a>
                     <div class="pull-right">

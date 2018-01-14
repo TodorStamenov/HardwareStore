@@ -1,0 +1,17 @@
+﻿@model CommentFormServiceModel
+
+@Html.AntiForgeryToken()
+@Html.HiddenFor(m => m.ItemId)
+@Html.HiddenFor(m => m.Page)
+<div class="form-group">
+    @Html.LabelFor(m => m.Content, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.TextAreaFor(m => m.Content, new { @class = "form-control", rows = 15 })
+        @Html.ValidationMessageFor(m => m.Content, string.Empty, new { @class = "text-danger" })
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input class="btn btn-success" type="submit" value="Save Comment" />
+    </div>
+</div>
