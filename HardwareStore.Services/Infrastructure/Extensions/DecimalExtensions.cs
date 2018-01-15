@@ -6,12 +6,12 @@
     {
         public static decimal PriceWithDiscount(this decimal price, int discount)
         {
-            return (price * (1M - (discount / 100M))).RoundDecimal(2);
+            return (price * (1M - (discount / 100M))).RoundPrice();
         }
 
-        public static decimal RoundDecimal(this decimal price, int signs)
+        public static decimal RoundPrice(this decimal price)
         {
-            return Math.Round(price, signs, MidpointRounding.AwayFromZero);
+            return Math.Round(price, 2, MidpointRounding.AwayFromZero);
         }
     }
 }

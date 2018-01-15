@@ -224,8 +224,10 @@
     <Compile Include="Areas\Moderator\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\ItemsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\ReviewsController.cs" />
+    <Compile Include="Areas\Moderator\Controllers\SalesController.cs" />
     <Compile Include="Areas\Moderator\Controllers\SubCategoriesController.cs" />
     <Compile Include="Areas\Moderator\Models\Items\ItemFormViewModel.cs" />
+    <Compile Include="Areas\Moderator\Models\Sales\ListSalesViewModel.cs" />
     <Compile Include="Areas\Moderator\Models\SubCategories\SubCategoryFormViewModel.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -300,6 +302,8 @@
     <Content Include="Areas\Moderator\Views\Items\Edit.cshtml" />
     <Content Include="Areas\Moderator\Views\Reviews\Delete.cshtml" />
     <Content Include="Areas\Moderator\Views\Comments\Delete.cshtml" />
+    <Content Include="Areas\Moderator\Views\Sales\All.cshtml" />
+    <Content Include="Areas\Moderator\Views\Sales\Details.cshtml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

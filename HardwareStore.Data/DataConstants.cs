@@ -19,7 +19,7 @@
             public const int MinNameLength = 2;
             public const int MaxNameLength = 100;
             public const int MinDescriptionLength = 3;
-            public const int MinDiscount = 0;
+            public const int MinDiscount = 1;
             public const int MaxDiscount = 100;
             public const double MinPrice = double.Epsilon;
             public const double MaxPrice = double.MaxValue;

@@ -30,7 +30,7 @@
                         <td>
                             @if (Model.User.Roles.Any(r => r.Name == role.Name))
                             {
-                                using (Html.BeginForm("RemoveRole", "Users", new { area = "Admin" }, FormMethod.Post))
+                                using (Html.BeginForm("RemoveRole", "Users", new { area = WebConstants.AdminArea }, FormMethod.Post))
                                 {
                                     @Html.AntiForgeryToken()
                                     <input type="hidden" name="userId" value="@Model.User.Id" />
@@ -40,7 +40,7 @@
                             }
                             else
                             {
-                                using (Html.BeginForm("AddRole", "Users", new { area = "Admin" }, FormMethod.Post))
+                                using (Html.BeginForm("AddRole", "Users", new { area = WebConstants.AdminArea }, FormMethod.Post))
                                 {
                                     @Html.AntiForgeryToken()
                                     <input type="hidden" name="userId" value="@Model.User.Id" />
@@ -58,7 +58,7 @@
                         <td>
                             @if (Model.IsUserLocked)
                             {
-                                using (Html.BeginForm("Unlock", "Users", new { area = "Admin" }, FormMethod.Post))
+                                using (Html.BeginForm("Unlock", "Users", new { area = WebConstants.AdminArea }, FormMethod.Post))
                                 {
                                     @Html.AntiForgeryToken()
                                     <input type="hidden" name="userId" value="@Model.User.Id" />
@@ -67,7 +67,7 @@
                             }
                             else
                             {
-                                using (Html.BeginForm("Lock", "Users", new { area = "Admin" }, FormMethod.Post))
+                                using (Html.BeginForm("Lock", "Users", new { area = WebConstants.AdminArea }, FormMethod.Post))
                                 {
                                     @Html.AntiForgeryToken()
                                     <input type="hidden" name="userId" value="@Model.User.Id" />

@@ -47,3 +47,7 @@ textarea {
 input, select, textarea {
     max-width: 100%;
 }
+
+a.disabled {
+    pointer-events: none;
+}

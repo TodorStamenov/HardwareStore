@@ -16,13 +16,13 @@
         {
             <div class="row well">
                 <div class="col-md-3">
-                    <a href="@Url.Action("Details","Items", new { area = string.Empty, id = item.Id })">
+                    <a href="@Url.Action("Details", "Items", new { area = string.Empty, id = item.Id })">
                         <img class="site-image" src="@item.Image" alt="Item Image" width="150" height="150" />
                     </a>
                 </div>
                 <div class="col-md-9">
                     <h4>
-                        <a href="@Url.Action("Details","Items", new { area = string.Empty, id = item.Id })">@item.Name</a>
+                        <a href="@Url.Action("Details", "Items", new { area = string.Empty, id = item.Id })">@item.Name</a>
                     </h4>
                     <hr />
                     <span class="item-info">Price: @item.Price&euro;</span>

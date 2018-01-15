@@ -26,7 +26,7 @@
                 {
                     Id = i.Id,
                     Name = i.Name,
-                    Price = i.Price.RoundDecimal(2),
+                    Price = i.Price.RoundPrice(),
                     Discount = i.Discount,
                     PriceWithDiscount = i.Price.PriceWithDiscount(i.Discount.GetValueOrDefault()),
                     UploadDate = i.UploadDate.ToLocalTime(),

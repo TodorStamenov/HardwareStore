@@ -41,7 +41,7 @@
                     <td>@user.Username</td>
                     <td>@user.Email</td>
                     <td>
-                        <a href="@Url.Action("EditRoles", "Users", new { area = "Admin", id = user.Id })" class="btn btn-default">Manage</a>
+                        <a href="@Url.Action("EditRoles", "Users", new { area = WebConstants.AdminArea, id = user.Id })" class="btn btn-default">Manage</a>
                     </td>
                 </tr>
             }
@@ -53,7 +53,7 @@
     <div class="row">
         <ul class="pagination">
             <li class="page-item">
-                <a class="page-link @previouseDisabled" href="@Url.Action("Users", "Users", new { area = "Admin", page = Model.PrevPage, userRole = userRole, search = Model.Search})" aria-label="Previous">
+                <a class="page-link @previouseDisabled" href="@Url.Action("Users", "Users", new { area = WebConstants.AdminArea, page = Model.PrevPage, userRole = userRole, search = Model.Search})" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     <span class="sr-only">Previous</span>
                 </a>
@@ -61,11 +61,11 @@
             @for (int i = Model.FirstPage; i <= Model.LastPage; i++)
             {
                 <li class="page-item @(Model.CurrentPage == i ? "active" : string.Empty)">
-                    <a class="page-link @(Model.CurrentPage == i ? "disabled" : string.Empty)" href="@Url.Action("Users", "Users", new { area = "Admin", page = i, userRole = userRole, search = Model.Search})">@i</a>
+                    <a class="page-link @(Model.CurrentPage == i ? "disabled" : string.Empty)" href="@Url.Action("Users", "Users", new { area = WebConstants.AdminArea, page = i, userRole = userRole, search = Model.Search})">@i</a>
                 </li>
             }
             <li class="page-item">
-                <a class="page-link @nextDisabled" href="@Url.Action("Users", "Users", new { area = "Admin", page = Model.NextPage, userRole = userRole, search = Model.Search})" aria-label="Next">
+                <a class="page-link @nextDisabled" href="@Url.Action("Users", "Users", new { area = WebConstants.AdminArea, page = Model.NextPage, userRole = userRole, search = Model.Search})" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                     <span class="sr-only">Next</span>
                 </a>

@@ -1,0 +1,45 @@
+﻿@model SaleDetailsServiceModel
+
+@{
+    ViewBag.Title = "Sale Details";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <br />
+        <img class="site-image" style="margin-top:10px;" src="@Model.ProfileImage" alt="Avatar" width="250" height="250" />
+        <h4>Username: @Model.Username</h4>
+        <h4>First Name: @Model.FirstName</h4>
+        <h4>Last Name: @Model.LastName</h4>
+        <h4>Address: @Model.Address</h4>
+        <h4>Phone: @Model.Phone</h4>
+        <h4>Date: @Model.Date.ToShortDateString()</h4>
+        <h4>Items: @Model.ItemsCount</h4>
+        <h4>Total Items: @Model.TotalItems</h4>
+        <h4>Grand Total: @Model.TotalPrice&euro;</h4>
+    </div>
+</div>
+<hr />
+<div class="row">
+    @foreach (var item in Model.Items)
+    {
+        <div class="row well">
+            <div class="col-md-2">
+                <a href="@Url.Action("Details", "Items", new { area = string.Empty, id = item.Id })">
+                    <img class="site-image" src="@item.Image" alt="Item Image" width="150" height="150" />
+                </a>
+            </div>
+            <div class="col-md-10">
+                <h4>
+                    <a href="@Url.Action("Details", "Items", new { area = string.Empty, id = item.Id })">@item.Name</a>
+                </h4>
+                <hr />
+                <span class="item-info">Price for Single Item: @item.SingleItemPrice&euro;</span>
+                <br />
+                <span class="item-info">Quantity: @item.Quantity</span>
+                <br />
+                <span class="item-info">Total Items Price: @item.Price&euro;</span>
+            </div>
+        </div>
+    }
+</div>

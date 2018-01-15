@@ -12,7 +12,6 @@
     public class ItemsController : BaseModeratorController
     {
         private const string Item = "Item";
-        private const string Items = "Items";
         private const string Details = "Details";
 
         private readonly IModeratorItemService itemService;

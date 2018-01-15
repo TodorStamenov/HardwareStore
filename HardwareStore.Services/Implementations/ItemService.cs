@@ -63,7 +63,7 @@
                     Name = i.Name,
                     Description = i.Description,
                     Image = i.Image.ConvertImage(),
-                    Price = i.Price.RoundDecimal(2),
+                    Price = i.Price.RoundPrice(),
                     Discount = i.Discount,
                     PriceWithDiscount = i.Price.PriceWithDiscount(i.Discount.GetValueOrDefault()),
                     Quantity = i.Quantity,
