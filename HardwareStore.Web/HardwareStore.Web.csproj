@@ -237,11 +237,13 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Extensions\FormFileExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\KernelExtensions.cs" />
+    <Compile Include="Infrastructure\Extensions\SessionExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\TempDataDictionaryExtensions.cs" />
     <Compile Include="Infrastructure\Filters\LogAttribute.cs" />
     <Compile Include="Infrastructure\Helpers\BasePageViewModel.cs" />
@@ -346,6 +348,8 @@
     <Content Include="Views\Comments\Create.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\_CommentForm.cshtml" />
+    <Content Include="Views\ShoppingCart\CartItems.cshtml" />
+    <Content Include="Views\ShoppingCart\Purchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HardwareStore.Common\HardwareStore.Common.csproj">

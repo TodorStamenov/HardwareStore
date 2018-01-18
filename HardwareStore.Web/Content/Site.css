@@ -51,3 +51,8 @@ input, select, textarea {
 a.disabled {
     pointer-events: none;
 }
+
+.cart-form {
+    float: left;
+    margin-right: 4px;
+}

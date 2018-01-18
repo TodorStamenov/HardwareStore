@@ -80,9 +80,8 @@
             Item item = this.db.Items.Find(id);
 
             if (item == null
-                || this.db.SubCategories.Any(sc => sc.Id == id)
-                || (this.NameExists(name)
-                    && item.Name != name))
+                || !this.db.SubCategories.Any(sc => sc.Id == subCategoryId)
+                || (this.NameExists(name) && item.Name != name))
             {
                 return false;
             }

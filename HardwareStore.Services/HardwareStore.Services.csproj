@@ -90,6 +90,8 @@
     <Compile Include="Implementations\CommentService.cs" />
     <Compile Include="Implementations\ItemService.cs" />
     <Compile Include="Implementations\ReviewService.cs" />
+    <Compile Include="Implementations\CartService.cs" />
+    <Compile Include="Implementations\CartManager.cs" />
     <Compile Include="Implementations\UserService.cs" />
     <Compile Include="Infrastructure\Extensions\ByteArrayExtensions.cs" />
     <Compile Include="Infrastructure\Extensions\DecimalExtensions.cs" />
@@ -100,7 +102,9 @@
     <Compile Include="Infrastructure\Helpers\BaseRedirectServiceModel.cs" />
     <Compile Include="Infrastructure\ServiceConstants.cs" />
     <Compile Include="IReviewService.cs" />
+    <Compile Include="ICartService.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="IShoppingCartManager.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Models\Categories\MenuCategoryServiceModel.cs" />
     <Compile Include="Models\Comments\CommentFormServiceModel.cs" />
@@ -110,6 +114,10 @@
     <Compile Include="Models\Items\ListItemsServiceModel.cs" />
     <Compile Include="Models\Reviews\ListReviewsServiceModel.cs" />
     <Compile Include="Models\Reviews\ReviewFormServiceModel.cs" />
+    <Compile Include="Models\Sales\PurchaseViewModel.cs" />
+    <Compile Include="Models\Shopping\CartItem.cs" />
+    <Compile Include="Models\Shopping\ListCartItemsServiceModel.cs" />
+    <Compile Include="Models\Shopping\ShoppingCart.cs" />
     <Compile Include="Models\SubCategories\MenuSubCategoryServiceModel.cs" />
     <Compile Include="Models\Users\ListUserRankingServiceModel.cs" />
     <Compile Include="Models\Users\ListUsersServiceModel.cs" />

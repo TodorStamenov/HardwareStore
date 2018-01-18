@@ -4,6 +4,7 @@
     ViewBag.Title = "Details";
     string previouseDisabled = Model.CurrentPage == 1 ? "disabled" : string.Empty;
     string nextDisabled = Model.CurrentPage == Model.TotalPages ? "disabled" : string.Empty;
+    bool hasHr = User.Identity.IsAuthenticated || Model.Item.Quantity > 0;
 }
 
 <div class="row">
@@ -20,7 +21,7 @@
                     <td>Price:</td>
                     <td>@Model.Item.Price&euro;</td>
                 </tr>
-                @if (Model.Item.Discount != 0)
+                @if (Model.Item.Discount != null)
                 {
                     <tr>
                         <td>Discount:</td>
@@ -78,9 +79,21 @@
                 <h4>Description:</h4>
                 @Model.Item.Description
             </div>
-            @if (User.Identity.IsAuthenticated)
+            @if (hasHr)
             {
                 <hr />
+            }
+            @if (Model.Item.Quantity > 0)
+            {
+                using (Html.BeginForm("Add", "ShoppingCart", FormMethod.Get, new { @class = "form-inline cart-form" }))
+                {
+                    @Html.Hidden(nameof(Model.Item.Id), Model.Item.Id)
+                    @Html.TextBox("quantity", 1, new { @class = "form-control", style = "width:50px;" })
+                    <input type="submit" class="btn btn-success" value="Add" />
+                }
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
                 <a class="btn btn-success" href="@Url.Action("Create", "Reviews", new { itemId = Model.Item.Id, page = Model.CurrentPage })">
                     Review
                 </a>
@@ -93,6 +106,7 @@
                     }
                 </div>
             }
+            <dib class="clearfix"></dib>
         </div>
         @if (Model.Reviews.Any())
         {

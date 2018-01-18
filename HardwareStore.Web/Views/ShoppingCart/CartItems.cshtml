@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ListCartItemsServiceModel>
+
+@{
+    ViewBag.Title = "Cart Items";
+}
+
+<div class="row">
+    <br />
+    <div class="col-md-3">
+        @Html.Action("Invoke", "Menu")
+    </div>
+    <div class="col-md-9">
+        <h2>@(Model.Any() ? ViewBag.Title : "Your cart is empty")</h2>
+        @foreach (var item in Model)
+        {
+            <div class="row well">
+                <div class="col-md-3">
+                    <a href="@Url.Action("Details", "Items", new { area = string.Empty, id = item.Id })">
+                        <img class="site-image" src="@item.Image" alt="Item Image" width="150" height="150" />
+                    </a>
+                </div>
+                <div class="col-md-9">
+                    <h4>
+                        <a href="@Url.Action("Details", "Items", new { area = string.Empty, id = item.Id })">@item.Name</a>
+                    </h4>
+                    <hr />
+                    <span class="item-info">Price: @item.Price&euro;</span>
+                    <span class="item-info">Quantity: @item.Quantity</span>
+                    <span class="item-info">--> @(item.Price * item.Quantity)&euro;</span>
+                    @if (item.Discount.GetValueOrDefault() != 0)
+                    {
+                        <br />
+                        <span class="item-info">Discount: @item.Discount%</span>
+                        <span class="item-info">Price With Discount: @item.PriceWithDiscount&euro;</span>
+                        <span class="item-info">--> @(item.PriceWithDiscount * item.Quantity)&euro;</span>
+                    }
+                    <hr />
+                    <a class="btn btn-default" href="@Url.Action("Remove","ShoppingCart", new { id = item.Id })">Remove Item</a>
+                </div>
+            </div>
+        }
+        @if (Model.Any())
+        {
+            <br />
+            <h3>Grand Total: @Model.Sum(i => i.PriceWithDiscount * i.Quantity)&euro;</h3>
+            <a href="@Url.Action("Clear", "ShoppingCart")" class="btn btn-default">Clear Cart</a>
+            <a href="@Url.Action("Purchase", "ShoppingCart")" class="btn btn-success">Purchase</a>
+        }
+    </div>
+</div>

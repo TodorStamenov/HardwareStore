@@ -14,6 +14,8 @@ namespace HardwareStore.Web
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
+    using Services;
+    using Services.Implementations;
     using System;
     using System.Data.Entity;
     using System.Reflection;
@@ -80,6 +82,7 @@ namespace HardwareStore.Web
             kernel.Bind<IAuthenticationManager>().ToMethod(x => HttpContext.Current.GetOwinContext().Authentication);
 
             kernel.AddDomainServices();
+            kernel.Bind<IShoppingCartManager>().To<CartManager>().InSingletonScope();
         }
     }
 }

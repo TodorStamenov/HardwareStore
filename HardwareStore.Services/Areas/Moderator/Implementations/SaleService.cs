@@ -2,8 +2,10 @@
 {
     using AutoMapper.QueryableExtensions;
     using Data;
+    using Data.Models;
     using Infrastructure.Extensions;
     using Models.Sales;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -22,6 +24,62 @@
                 .Sales
                 .Filter(search)
                 .Count();
+        }
+
+        public bool Add(
+            Dictionary<int, int> items,
+            string firstName,
+            string lastName,
+            string address,
+            string phone,
+            int userId)
+        {
+            if (!this.db.Users.Any(u => u.Id == userId))
+            {
+                return false;
+            }
+
+            Sale sale = new Sale
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                Address = address,
+                Phone = phone,
+                UserId = userId,
+                Date = DateTime.UtcNow
+            };
+
+            foreach (var itemInfo in items)
+            {
+                Item item = this.db.Items.Find(itemInfo.Key);
+
+                if (item == null)
+                {
+                    continue;
+                }
+
+                int quantity = itemInfo.Value > item.Quantity
+                    ? item.Quantity
+                    : itemInfo.Value;
+
+                item.Quantity -= quantity;
+
+                sale.Items.Add(new ItemSale
+                {
+                    ItemId = item.Id,
+                    Item = item,
+                    Quantity = quantity,
+                    Price = item.Price.PriceWithDiscount(item.Discount.GetValueOrDefault()) * quantity
+                });
+            }
+
+            sale.TotalPrice = sale.Items
+                .Sum(i => i.Item.Price.PriceWithDiscount(i.Item.Discount.GetValueOrDefault()) * i.Quantity);
+
+            this.db.Sales.Add(sale);
+            this.db.SaveChanges();
+
+            return true;
         }
 
         public SaleDetailsServiceModel Details(int id)

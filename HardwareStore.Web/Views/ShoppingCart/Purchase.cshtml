@@ -1,0 +1,52 @@
+﻿@model PurchaseViewModel
+@{
+    ViewBag.Title = "Purchase";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        @Html.Action("Invoke", "Menu")
+    </div>
+    <div class="col-md-9">
+        <h2 class="col-md-offset-2">@ViewBag.Title</h2>
+        @using (Html.BeginForm("Purchase", "ShoppingCart", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FirstName, string.Empty, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LastName, string.Empty, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Phone, new { @class = "col-md-2 control-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Phone, string.Empty, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Address, new { @class = "col-md-2 control-label" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Address, string.Empty, new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6">
+                    <a class="btn btn-default" href=@Url.Action("CartItems", "ShoppingCart", new { area = string.Empty })>Back</a>
+                    <input class="btn btn-success" type="submit" value="Purchase" />
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
